@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: incidentassistant-postgres
+    environment:
+      POSTGRES_USER: incidentassistant
+      POSTGRES_PASSWORD: YOUR_PASSWORD
+      POSTGRES_DB: incidentassistant
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: incidentassistant-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
